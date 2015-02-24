@@ -283,32 +283,32 @@
                 </li>
                 <li class="classic-menu-dropdown">
                     <a data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="">
-                         Classic <i class="fa fa-angle-down"></i>
+                         To Do <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu pull-right">
                         <li>
-                            <a href="#">
-                                 Section 1
+                            <a href="view-stock">
+                                 View Product
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                 Section 2
+                            <a href="add-product">
+                                 Add Product
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                 Section 3
+                            <a href="add-stock">
+                                 Add Stock
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                 Section 4
+                            <a href="manage-category">
+                                 Manage Category
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                 Section 5
+                            <a href="manage-vendor">
+                                 Manage Vendor
                             </a>
                         </li>
                         <li class="dropdown-submenu">
@@ -372,27 +372,9 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="">
-                         Link
-                    </a>
-                </li>
-                <li>
-                    <span class="hor-menu-search-form-toggler">
-                         &nbsp;
-                    </span>
-                    <div class="search-form">
-                        <form class="form-search">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search..." class="form-control">
-                                <div class="input-group-btn">
-                                    <button type="button" class="btn"></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
             </ul>
+            
+            @include('includes.change-theme')
         </div>
         <!-- END HORIZANTAL MENU -->
             <!-- BEGIN USER LOGIN DROPDOWN -->

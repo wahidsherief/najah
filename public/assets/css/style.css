@@ -649,8 +649,7 @@ Page content
     width: 100%;
   }
 
-.ie8 .page-content { 
-    margin-left: 225px; 
+.ie8 .page-content {  
     margin-top: 0px;
     min-height: 760px; 
     padding: 25px 20px 20px 20px;
@@ -978,7 +977,6 @@ Page content
 
 .ie8 .page-content { 
     padding: 20px;
-    margin-left: 225px; 
     margin-top: 0px;
     min-height: 760px;
 }
@@ -4376,5 +4374,51 @@ UI Loading
   font-size: 5px;
   border: 1px solid #777;
 }
+
+.input-medium {
+    width: auto !important;
+  }
+
+.product-group{
+  background: #f1f1f1;
+}
+
+.amount-group{
+  background: #e5e5e5;
+}
+
+textarea{
+  resize:vertical; 
+}
+
+.page-content{
+  margin-left: 0px !important;
+}
+
+.upper-right-section{
+  border: 1px solid #888;
+  height: 135px;
+}
+
+.upper-left-section span{
+  padding-top: 7px;
+}
+
+.theme-panel{
+  width: 30px !important;
+  margin-top: -3px !important;
+}
+
+.theme-panel > .theme-options {
+  top: 45px;
+  width: 300px;
+}
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 1200px) {
+  .upper-left-section, .upper-left-section span{
+    padding: 0px;
+  }
+}
+
 
 /* Custom CSS by wahid -- Close */

@@ -41,6 +41,21 @@ Route::get('/manage-category', function()
 	return View::make('manage-category');
 });
 
+Route::get('/add-stock', function()
+{
+	return View::make('add-stock');
+});
+
+Route::get('/view-stock', function()
+{
+	return View::make('view-stock');
+});
+
+Route::get('/manage-vendor', function()
+{
+	return View::make('manage-vendor');
+});
+
 Route::post('login','LoginController@doLogIn');
 Route::get('logout', 'LoginController@doLogout');
 

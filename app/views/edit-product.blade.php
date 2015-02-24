@@ -994,53 +994,38 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="tab-content no-space">
 										<div class="tab-pane active" id="tab_general">
 											<div class="form-body">
-												<div class="form-group">
-													<label class="col-md-2 control-label">Name:
-													<span class="required">
-														 *
-													</span>
-													</label>
-													<div class="col-md-10">
-														<input type="text" class="form-control" name="product[name]" placeholder="">
+												<div class='col-md-12'>
+													<div class="upper-left-section col-md-10 col-xs-12">
+														<span class='col-md-10 col-xs-12 '>
+															<label class="col-md-3 control-label">Name:</label>
+															<span class="col-md-7 control-label">Test Product</span>
+														</span>
+														<span class='col-md-10 col-xs-12 '>
+															<label class="col-md-3 control-label">Category:</label>
+															<span class="col-md-7 control-label">Test Product</span>
+														</span>
+														<span class='col-md-10 col-xs-12 '>
+															<label class="col-md-3 control-label">Sub-category:</label> 
+															<span class="col-md-7 control-label">Test Product</span>
+														</span>
+														<span class='col-md-10 col-xs-12 '>
+															<label class="col-md-3 control-label">Quantity:</label>
+															<span class="col-md-7 control-label">Test Product</span>
+														</span>
+													</div>
+													<div class="upper-right-section col-md-2 col-xs-12">
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-md-2 control-label">Description:
-													<span class="required">
-														 *
-													</span>
-													</label>
-													<div class="col-md-10">
-														<textarea class="form-control" name="product[description]"></textarea>
-													</div>
-												</div><div class="form-group">
-													<div class="form-group">
-														<label class="col-md-2 control-label">Category:
-														<span class="required">
-															 *
-														</span>
-														</label>
-														<div class="col-md-4">
-															<select class="table-group-action-input form-control input-medium" name="product[status]">
-																<option value="">Select...</option>
-																<option value="1">Published</option>
-																<option value="0">Not Published</option>
-															</select>
+															<label class="col-md-2 col-xs-12 control-label">Description:
+															<span class="required">
+																 *
+															</span>
+															</label>
+															<div class="col-md-10 col-xs-12">
+																<textarea class="form-control" name="product[description]"></textarea>
+															</div>
 														</div>
-														<label class="col-md-2 control-label">Sub-Category:
-														<span class="required">
-															 *
-														</span>
-														</label>
-														<div class="col-md-4">
-															<select class="table-group-action-input form-control input-medium" name="product[status]">
-																<option value="">Select...</option>
-																<option value="1">Published</option>
-																<option value="0">Not Published</option>
-															</select>
-														</div>
-													</div>
-												</div>
 												<div class="form-group">
 													<div class="form-group">
 														<label class="col-md-2 control-label">Sku:
@@ -1049,7 +1034,7 @@ License: You must have a valid license purchased only from themeforest(the above
 														</span>
 														</label>
 														<div class="col-md-4">
-															<select class="table-group-action-input form-control input-medium" name="product[status]">
+															<select class="table-group-action-input form-control" name="product[status]">
 																<option value="">Select...</option>
 																<option value="1">Published</option>
 																<option value="0">Not Published</option>
@@ -1061,7 +1046,7 @@ License: You must have a valid license purchased only from themeforest(the above
 														</span>
 														</label>
 														<div class="col-md-4">
-															<select class="table-group-action-input form-control input-medium" name="product[status]">
+															<select class="table-group-action-input form-control" name="product[status]">
 																<option value="">Select...</option>
 																<option value="1">Published</option>
 																<option value="0">Not Published</option>
