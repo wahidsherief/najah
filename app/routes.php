@@ -41,6 +41,8 @@ Route::get('/manage-category', function()
 	return View::make('manage-category');
 });
 
+Route::post('/manage-category/add','CategoryController@store');
+
 Route::get('/add-stock', function()
 {
 	return View::make('add-stock');
