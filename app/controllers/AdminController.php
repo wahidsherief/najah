@@ -10,7 +10,7 @@ class AdminController extends \BaseController {
     public function index()
     {
         // get all the inputs
-        $userdatas = Userdatas::all();
+        $userdatas = User::all();
 
         // load the view and pass the inputs
         return View::make('admin')
@@ -25,7 +25,7 @@ class AdminController extends \BaseController {
      */
     public function show($id)
     {
-        $user = Userdatas::find($id);
+        $user = User::find($id);
         return View::make('pages.userdetails')
             ->with('users', $user);
     }
@@ -56,7 +56,7 @@ class AdminController extends \BaseController {
                 ->withInput(Input::except('password'));
         } else {
             // store
-            $user = new Userdatas;
+            $user = new User;
             $user->name       = Input::get('name');
             $user->email      = Input::get('email');
             $user->address = Input::get('address');
@@ -78,7 +78,7 @@ class AdminController extends \BaseController {
      */
     public function edit($id)
     {
-        $user = Userdatas::find($id);
+        $user = User::find($id);
         return View::make('pages.edit')
             ->with('users', $user);
     }
@@ -110,7 +110,7 @@ class AdminController extends \BaseController {
                 ->withInput(Input::except('password'));
         } else {
             // store
-            $user = Userdatas::find($id);
+            $user = User::find($id);
             $user->name       = Input::get('name');
             $user->email      = Input::get('email');
             $user->address = Input::get('address');
@@ -132,10 +132,8 @@ class AdminController extends \BaseController {
     public function delete($id)
     {
         // delete
-        $user = Userdatas::find($id);
+        $user = User::find($id);
         $user->delete();
-
-        redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('admin');
     }

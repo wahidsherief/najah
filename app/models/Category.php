@@ -5,7 +5,7 @@ class Category extends \Eloquent {
 
 	protected $table = 'categories';
 
-	public function getCategory($category){
+	public static function getCategory($category){
 
 		$category->category = $category['category'];
 		$category->save();

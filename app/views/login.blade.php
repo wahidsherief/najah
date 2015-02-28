@@ -87,7 +87,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</form>
 	<!-- END LOGIN FORM -->
 	@if ($errors->has())
-	<div class='alert alert-danger alert-dismissable' style='background:#DA3838; color:white'>
+	<div class='alert alert-danger alert-dismissable'>
 		<button class='close' type='button' data-dismiss="alert" aria-hidden="true">
 			&times;
 		</button>

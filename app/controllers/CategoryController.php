@@ -43,12 +43,12 @@ class CategoryController extends \BaseController {
         } else {
             // store
             $category = new Category;
-            $category->name  = Input::get('name');
+            $category->category  = Input::get('name');
             
            	Category::getCategory($category);
 
             // redirect
-            Session::flash('message', 'Successfully Added!');
+            Session::flash('alert-success', 'Category Added Successfully !');
             return Redirect::to('manage-category');
         }
 	}
