@@ -36,12 +36,10 @@ Route::get('/edit-product', function()
 	return View::make('edit-product');
 });
 
-Route::get('/manage-category', function()
-{
-	return View::make('manage-category');
-});
-
 Route::post('/manage-category/add','CategoryController@store');
+Route::get('/manage-category','CategoryController@index');
+Route::get('/manage-client','ClientController@index');
+Route::post('/manage-client/add','ClientController@store');
 
 Route::get('/add-stock', function()
 {
@@ -51,11 +49,6 @@ Route::get('/add-stock', function()
 Route::get('/view-stock', function()
 {
 	return View::make('view-stock');
-});
-
-Route::get('/manage-vendor', function()
-{
-	return View::make('manage-vendor');
 });
 
 Route::post('login','LoginController@doLogIn');

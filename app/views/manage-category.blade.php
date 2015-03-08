@@ -107,9 +107,12 @@
 													</label>
 													<div class="col-md-4">
 														<select class="table-group-action-input form-control" name="product[status]">
-															<option value="">Select...</option>
-															<option value="1">Published</option>
-															<option value="0">Not Published</option>
+															<option>Select...</option>
+															@if( isset($categories))
+																@foreach($categories as $categories)
+																	<option value="">{{ $categories->category }}</option>
+																@endforeach
+															@endif
 														</select>
 													</div>	
 
@@ -234,4 +237,3 @@ jQuery(document).ready(function() {
 </script>
 @include('includes.end-page')
 
-kAj0l@123
