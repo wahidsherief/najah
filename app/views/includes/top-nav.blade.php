@@ -307,8 +307,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="manage-vendor">
-                                 Manage Vendor
+                            <a href="manage-client">
+                                 Manage Clients
                             </a>
                         </li>
                         <li class="dropdown-submenu">

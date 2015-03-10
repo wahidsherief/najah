@@ -23,5 +23,11 @@
 <script>
 jQuery(document).ready(function() {       
    App.init();
+   $('.toggle-section').hide();
+   $('.toggle-btn').click(function(){
+   		var toggleValue = $(this).attr('toggle');
+   		$('.toggle-section-'+toggleValue).slideToggle();
+   })
 });
+
 </script>

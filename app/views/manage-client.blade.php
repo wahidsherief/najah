@@ -45,12 +45,12 @@
 				<div class="col-md-8 col-md-offset-2">
 					<h3>
 					Add Client
-					<a href="" class="btn btn-circle btn-scroll" style='padding: 2px 4px; margin-top:-2px'>
+					<a class="btn btn-circle btn-scroll toggle-btn" toggle=1 style='padding: 2px 4px; margin-top:-2px'>
 	              		<i class="fa fa-plus"></i>
 	              	</a>
 					</h3>
 					{{ Form::open(array('url' => 'manage-client/add', 'class' => 'form-horizontal form-row-seperated')) }}
-						<div class="portlet">
+						<div class="portlet toggle-section toggle-section-1">
 							<div class="portlet-title">
 								<div class="actions btn-set">
 									<button class="btn default"><i class="fa fa-reply"></i> Reset</button>
@@ -69,7 +69,7 @@
 													</span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" class="form-control" name="name" placeholder="">
+														<input type="text" class="form-control" name="name" required>
 													</div>
 													<label class="col-md-2 control-label">Category:
 													<span class="required">
@@ -77,7 +77,7 @@
 													</span>
 													</label>
 													<div class="col-md-4">
-														<select class="table-group-action-input form-control" name="category">
+														<select class="table-group-action-input form-control" name="category" required>
 															<option>Select</option>
 															@if( isset($category))
 																@foreach($category as $categories)
@@ -94,7 +94,7 @@
 													</span>
 													</label>
 													<div class="col-md-4">
-														<input type="text" class="form-control" name="phone_one" placeholder="">
+														<input type="text" class="form-control" name="phone_one" placeholder="" required>
 													</div>
 													<label class="col-md-2 control-label">Phone 2:</label>
 													<div class="col-md-4">
@@ -108,7 +108,7 @@
 													</span>
 													</label>
 													<div class="col-md-10">
-														<textarea class="form-control" name="address"></textarea>
+														<textarea class="form-control" name="address" required></textarea>
 													</div>
 												</div>
 											</div>

@@ -35,7 +35,7 @@
 					<h3 class="page-title">
 					Product Category <small>create new category</small>
 
-					<a href="" class="btn btn-circle btn-scroll pull-right">
+					<a class="btn btn-circle btn-scroll pull-right toggle-btn" toggle=1>
 	              		<i class="fa fa-angle-double-down animated" id="down-arrow"></i>
 	              	</a>
 					</h3>
@@ -45,7 +45,7 @@
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-8 col-md-offset-2 toggle-section toggle-section-1">
 					<div class="portlet">
 						<div class="portlet-body">
 							<div class="tabbable">
@@ -83,7 +83,7 @@
 					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 					<h3 class="page-title">
 					Product Sub-category <small>create new sub-category</small>
-					<a href="" class="btn btn-circle btn-scroll pull-right">
+					<a class="btn btn-circle btn-scroll pull-right toggle-btn" toggle=2>
 	              		<i class="fa fa-angle-double-down animated" id="down-arrow"></i>
 	              	</a>
 					</h3>
@@ -91,7 +91,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-8 col-md-offset-2 toggle-section toggle-section-2">
 					<form class="form-horizontal form-row-seperated" action="#">
 						<div class="portlet">
 							<div class="portlet-body">
@@ -107,7 +107,7 @@
 													</label>
 													<div class="col-md-4">
 														<select class="table-group-action-input form-control" name="product[status]">
-															<option>Select...</option>
+															<option>Select</option>
 															@if( isset($categories))
 																@foreach($categories as $categories)
 																	<option value="">{{ $categories->category }}</option>
@@ -144,23 +144,11 @@
 			</div>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-					<h3 class="page-title">
-					All category <small>view all categories & sub-categories</small>
-					<a href="" class="btn btn-circle btn-scroll pull-right">
-	              		<i class="fa fa-angle-double-down animated" id="down-arrow"></i>
-	              	</a>
-					</h3>
-					<!-- END PAGE TITLE & BREADCRUMB-->
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
 					<div class="portlet box green">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-globe"></i>Stock List
+								<i class="fa fa-globe"></i>All Categories
 							</div>
 							<div class="tools">
 								<a href="javascript:;" class="reload">
