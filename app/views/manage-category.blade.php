@@ -51,7 +51,7 @@
 							<div class="tabbable">
 								<div class="tab-content no-space">
 									<div class="tab-pane active" id="tab_general">
-										{{ Form::open(array('url' => 'manage-category/add')) }}
+										{{ Form::open(array('url' => 'manage-category/add', 'class' => 'form-horizontal form-row-seperated')) }}
 											<div class="form-body">
 												<div class="form-group">
 													<label class="col-md-2 control-label">Category:
@@ -92,53 +92,54 @@
 			</div>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 toggle-section toggle-section-2">
-					<form class="form-horizontal form-row-seperated" action="#">
-						<div class="portlet">
-							<div class="portlet-body">
-								<div class="tabbable">
-									<div class="tab-content no-space">
-										<div class="tab-pane active" id="tab_general">
-											<div class="form-body">
-												<div class="form-group">
-													<label class="col-md-2 control-label">Status:
-													<span class="required">
-														 *
-													</span>
-													</label>
-													<div class="col-md-4">
-														<select class="table-group-action-input form-control" name="product[status]">
-															<option>Select</option>
-															@if( isset($categories))
-																@foreach($categories as $categories)
-																	<option value="">{{ $categories->category }}</option>
-																@endforeach
-															@endif
-														</select>
-													</div>	
+					<div class="portlet">
+						<div class="portlet-body">
+							<div class="tabbable">
+								<div class="tab-content no-space">
+									<div class="tab-pane active" id="tab_general">
+										{{ Form::open(array('url' => 'manage-category/add-subcategory', 'class' => 'form-horizontal form-row-seperated')) }}
+										<div class="form-body">
+											<div class="form-group">
+												<label class="col-md-2 control-label">Category:
+												<span class="required">
+													 *
+												</span>
+												</label>
+												<div class="col-md-4">
+													<select name='category' class="table-group-action-input form-control" name="product[status]">
+														<option>Select</option>
+														@if( isset($categories))
+															@foreach($categories as $categories)
+																<option value="{{ $categories->id }}">{{ $categories->category }}</option>
+															@endforeach
+														@endif
+													</select>
+												</div>	
 
-													<label class="col-md-2 control-label">Status:
-													<span class="required">
-														 *
-													</span>
-													</label>
-													<div class="col-md-4">
-														<input type="text" class='form-control'>
-													</div>	
-												</div>
-												<div class="form-group">
-													<div class="margin-right-15 actions btn-set pull-right">
-														<button class="btn default"><i class="fa fa-reply"></i> Reset</button>
-														<button class="btn green"><i class="fa fa-check"></i> Save</button>
-													</div>
+												<label class="col-md-2 control-label">Subcategory:
+												<span class="required">
+													 *
+												</span>
+												</label>
+												<div class="col-md-4">
+													<input type="text" name='subcategory' class='form-control'>
+												</div>	
+											</div>
+											<div class="form-group">
+												<div class="margin-right-15 actions btn-set pull-right">
+													<button class="btn default"><i class="fa fa-reply"></i> Reset</button>
+													<button class="btn green"><i class="fa fa-check"></i> Save</button>
 												</div>
 											</div>
-
+										{{ Form::close() }}
 										</div>
-									</div>
 
+									</div>
 								</div>
+
 							</div>
 						</div>
+					</div>
 					</form>
 				</div>
 			</div>
@@ -158,20 +159,17 @@
 							</div>
 						</div>
 						<div class="portlet-body">
-							<table class="table table-striped table-bordered table-hover" id="sample_1">
+							<table class="table table-striped table-bordered table-hover">
 							<thead>
 							<tr>
 								<th>
-									 Product
+									 #
 								</th>
 								<th>
 									 Category
 								</th>
 								<th>
-									 Stock
-								</th>
-								<th>
-									 Edit
+									 Subcategory
 								</th>
 								<th>
 									 Delete
@@ -179,20 +177,16 @@
 							</tr>
 							</thead>
 							<tbody>
+							@foreach( $categories as $category )	
 							<tr>
 								<td>
-									 Trident
+									<input type="checkbox" class='checkbox' value="{{ $category->category_id }}">
 								</td>
 								<td>
-									 Internet Explorer 4.0
+									Category
 								</td>
 								<td>
-									 Win 95+
-								</td>
-								<td>
-									<a href="#" class="btn btn-xs yellow">
-										Edit <i class="fa fa-edit"></i>
-									</a>
+									Subcategories
 								</td>
 								<td>
 									<a href="#" class="btn btn-xs red">
@@ -217,11 +211,5 @@
 @include('includes.footer')
 <!-- END FOOTER -->
 @include('includes.js')
-<script src="assets/scripts/custom/table-advanced.js"></script>
-<script>
-jQuery(document).ready(function() {
-   TableAdvanced.init();
-});
-</script>
 @include('includes.end-page')
 

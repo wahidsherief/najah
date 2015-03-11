@@ -11,10 +11,12 @@ class CategoryController extends \BaseController {
 	{
 		// get all the inputs
         $categories = Category::all();
+        $subcategories = Subcategory::all();
 
         // load the view and pass the inputs
         return View::make('manage-category')
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('subcategories', $subcategories);
 	}
 
 
@@ -23,14 +25,14 @@ class CategoryController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function storeCategory()
 	{
 		
         // validate
         // read more on validation at http://laravel.com/docs/validation
 
         $rules = array(
-            'name'       => 'required'
+            'name' => 'required'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -52,6 +54,39 @@ class CategoryController extends \BaseController {
             return Redirect::to('manage-category');
         }
 	}
+
+	public function storeSubcategory()
+	{
+		
+        // validate
+        // read more on validation at http://laravel.com/docs/validation
+
+        $rules = array(
+            'category' => 'required',
+            'subcategory' => 'required'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('manage-category')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            // store
+            $subcategory = new Subcategory;
+            $subcategory->category_id  = Input::get('category');
+            $subcategory->subcategory  = Input::get('subcategory');
+            
+           	Subcategory::getSubcategory($subcategory);
+
+            // redirect
+            Session::flash('alert-success', 'Subcategory Added Successfully !');
+            return Redirect::to('manage-category');
+        }
+	}
+
 
 
 	/**

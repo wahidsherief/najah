@@ -36,7 +36,8 @@ Route::get('/edit-product', function()
 	return View::make('edit-product');
 });
 
-Route::post('/manage-category/add','CategoryController@store');
+Route::post('/manage-category/add','CategoryController@storeCategory');
+Route::post('/manage-category/add-subcategory','CategoryController@storeSubcategory');
 Route::get('/manage-category','CategoryController@index');
 Route::get('/manage-client','ClientController@index');
 Route::post('/manage-client/add','ClientController@store');
