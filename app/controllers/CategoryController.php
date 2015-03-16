@@ -11,12 +11,13 @@ class CategoryController extends \BaseController {
 	{
 		// get all the inputs
         $categories = Category::all();
-        $subcategories = Subcategory::all();
+
+        $cat = $categories;
 
         // load the view and pass the inputs
         return View::make('manage-category')
             ->with('categories', $categories)
-            ->with('subcategories', $subcategories);
+            ->with('cats', $cat);
 	}
 
 

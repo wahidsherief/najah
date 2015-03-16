@@ -106,7 +106,7 @@
 												</span>
 												</label>
 												<div class="col-md-4">
-													<select name='category' class="table-group-action-input form-control" name="product[status]">
+													<select name='category' class="table-group-action-input form-control" name="">
 														<option>Select</option>
 														@if( isset($categories))
 															@foreach($categories as $categories)
@@ -176,14 +176,14 @@
 								</th>
 							</tr>
 							</thead>
-							<tbody>
-							@foreach( $categories as $category )	
+							<tbody>	
+							@foreach( $cats as $cat)
 							<tr>
 								<td>
-									<input type="checkbox" class='checkbox' value="{{ $category->category_id }}">
+									<input type="checkbox" class='checkbox' value="">
 								</td>
 								<td>
-									Category
+									{{ $cat->category }}
 								</td>
 								<td>
 									Subcategories
@@ -194,6 +194,7 @@
 									</a>
 								</td>
 							</tr>
+							@endforeach
 							</tbody>
 							</table>
 						</div>

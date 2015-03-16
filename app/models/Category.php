@@ -3,7 +3,7 @@
 class Category extends \Eloquent {
 	//protected $fillable = [];
 
-	protected $table = 'categories';
+	protected $table = 'category';
 
 	public static function getCategory($category){
 

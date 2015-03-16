@@ -1,9 +1,9 @@
 <?php
 
 class Subcategory extends \Eloquent {
-	protected $fillable = [];
+	//protected $fillable = [];
 
-	protected $table = 'subcategories';
+	protected $table = 'subcategory';
 
 
 	public static function getSubcategory($subcategory){
