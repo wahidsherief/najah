@@ -38,6 +38,7 @@ Route::get('/edit-product', function()
 
 Route::post('/manage-category/add','CategoryController@storeCategory');
 Route::post('/manage-category/add-subcategory','CategoryController@storeSubcategory');
+Route::post('/manage-category/delete','CategoryController@deleteCategory');
 Route::get('/manage-category','CategoryController@index');
 Route::get('/manage-client','ClientController@index');
 Route::post('/manage-client/add','ClientController@store');

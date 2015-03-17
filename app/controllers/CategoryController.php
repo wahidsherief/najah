@@ -89,52 +89,41 @@ class CategoryController extends \BaseController {
 	}
 
 
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
 	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function deleteCategory()
 	{
-		//
+		$deleteArray = Input::get('deleteArray');
+
+		$array = explode(',',$deleteArray[0]);
+		$length = count($array);
+
+		if($array[0] == 0)
+		{
+			for($i=0; $i<$length; $i++)
+			{
+				Category::destroy($array[$i]);
+				Subcategory::where('category_id', '=', $array[$i])->delete();
+			}
+
+			Session::flash('alert-success', 'Category Deleted Successfully !');
+            return Redirect::to('manage-category');
+		}
+
+		else
+		{
+			for($i=0; $i<$length; $i++)
+			{
+				Subcategory::destroy($array[$i]);			
+			}
+
+			Session::flash('alert-success', 'Subcategory deleted Successfully !');
+            return Redirect::to('manage-category');
+		}
 	}
 
 

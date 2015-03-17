@@ -159,6 +159,17 @@
 							</div>
 						</div>
 						<div class="portlet-body">
+
+							{{ Form::open(array('url' => 'manage-category/delete')) }}
+							<input type="hidden" id='deleteArray' name='deleteArray[]'>
+							<input type="hidden" id='deleteValue' name='deleteValue[]'>
+							<button id='deleteBtn' class="btn btn-sm red pull-right">
+								Delete <i class="fa fa-times"></i>
+							</button>
+							{{ Form::close() }}
+
+							<br><br>
+
 							<table class="table table-striped table-bordered table-hover">
 							<thead>
 							<tr>
@@ -171,27 +182,23 @@
 								<th>
 									 Subcategory
 								</th>
-								<th>
-									 Delete
-								</th>
 							</tr>
 							</thead>
 							<tbody>	
-							@foreach( $cats as $cat)
+							@foreach($cats as $cat)
 							<tr>
 								<td>
-									<input type="checkbox" class='checkbox' value="">
+									<input type="checkbox" class='checkbox categorySelect' value="{{ $cat->id }}">
 								</td>
 								<td>
 									{{ $cat->category }}
 								</td>
 								<td>
-									Subcategories
-								</td>
-								<td>
-									<a href="#" class="btn btn-xs red">
-										Delete <i class="fa fa-times"></i>
-									</a>
+									@foreach(Subcategory::where('category_id','=',$cat->id)->get() as $subcat)
+										<input type="checkbox" class='checkbox subcategorySelect' value="{{ $subcat->id }}">
+										{{ $subcat->subcategory }}
+										<br>
+									@endforeach
 								</td>
 							</tr>
 							@endforeach
@@ -212,5 +219,47 @@
 @include('includes.footer')
 <!-- END FOOTER -->
 @include('includes.js')
+<script>
+	var categoryVals = [] ;
+	var subcategoryVals = [] ;
+
+	function categoryDelete(){
+
+    	categoryVals.push(0);
+
+    	$('.categorySelect:checked').each(function(){
+    		categoryVals.push($(this).val());
+    	})
+
+    	return categoryVals;
+    }
+
+	function subcategoryDelete(){
+
+		subcategoryVals.push(1);
+
+    	$('.subcategorySelect:checked').each(function(){
+    		subcategoryVals.push($(this).val());
+    	})
+
+    	return subcategoryVals;
+    }
+
+    jQuery(document).ready(function($){
+    	
+    	var deleteArray = [] ;
+
+    	$('.categorySelect').click(function(){
+    		$('.subcategorySelect').prop('checked', false).uniform(); 
+    		deleteArray = categoryDelete();
+    		$('#deleteArray').attr('value',deleteArray);
+    	})
+
+    	$('.subcategorySelect').click(function(){
+    		deleteArray = subcategoryDelete();
+    		$('#deleteArray').attr('value',deleteArray);
+    	})
+    })
+</script>
 @include('includes.end-page')
 
