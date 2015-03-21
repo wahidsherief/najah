@@ -34,7 +34,7 @@ class ClientController extends \BaseController {
 
         $rules = array(
             'name' => 'required',
-            'category' => 'required|not_in:"Select"',
+            'category_id' => 'required|not_in:"Select"',
             'phone_one' => 'required|numeric|min:11',
             'phone_second' => 'numeric|min:11',
             'address' => 'required|min:10'
@@ -51,7 +51,7 @@ class ClientController extends \BaseController {
             // store
             $clients = new Client;
             $clients->name  = Input::get('name');
-            $clients->category  = Input::get('category');
+            $clients->category_id  = Input::get('category_id');
             $clients->phone_main  = Input::get('phone_one');
             $clients->phone_optional  = Input::get('phone_second');
             $clients->address  = Input::get('address');
@@ -107,9 +107,13 @@ class ClientController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function delete()
 	{
-		//
+		Client::find(Input::get('id'))->delete(); 
+		
+		// redirect  
+        Session::flash('alert-success', 'Client Deleted Successfully !');
+        return Redirect::to('manage-client');
 	}
 
 

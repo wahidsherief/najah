@@ -77,7 +77,7 @@
 													</span>
 													</label>
 													<div class="col-md-4">
-														<select class="table-group-action-input form-control" name="category" required>
+														<select class="table-group-action-input form-control" name="category_id" required>
 															<option>Select</option>
 															@if( isset($category))
 																@foreach($category as $categories)
@@ -147,7 +147,7 @@
 											 Phone
 										</th>
 										<th>
-											 Phone (2)
+											 Phone (Optional)
 										</th>
 										<th>
 											 Delete
@@ -159,13 +159,20 @@
 										@foreach( $clients as $client )
 											<tr>
 												<td>{{ $client->name }}</td>
-												<td>{{ $client->category }}</td>
+												<td>
+													@foreach(Category::where('id','=',$client->category_id)->get() as $cat)
+													{{ $cat->category }}
+													@endforeach
+												</td>
 												<td>{{ $client->phone_main }}</td>
 												<td>{{ $client->phone_optional }}</td>
 												<td>
-													<a href="#" class="btn btn-xs red">
+													{{ Form::open(array('url' => 'manage-client/delete','method' => 'DELETE')) }}
+													<input type="hidden" value='{{ $client->id }}' name='id'>
+													<button class="btn btn-xs red">
 														Delete <i class="fa fa-times"></i>
-													</a>
+													</button>
+													{{ Form::close() }}
 												</td>
 											</tr>
 										@endforeach

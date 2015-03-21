@@ -125,6 +125,4 @@ class CategoryController extends \BaseController {
             return Redirect::to('manage-category');
 		}
 	}
-
-
 }

@@ -36,22 +36,19 @@ Route::get('/edit-product', function()
 	return View::make('edit-product');
 });
 
-Route::post('/manage-category/add','CategoryController@storeCategory');
-Route::post('/manage-category/add-subcategory','CategoryController@storeSubcategory');
-Route::post('/manage-category/delete','CategoryController@deleteCategory');
-Route::get('/manage-category','CategoryController@index');
-Route::get('/manage-client','ClientController@index');
-Route::post('/manage-client/add','ClientController@store');
+Route::post('manage-category/add','CategoryController@storeCategory');
+Route::post('manage-category/add-subcategory','CategoryController@storeSubcategory');
+Route::post('manage-category/delete','CategoryController@deleteCategory');
+Route::get('manage-category','CategoryController@index');
+Route::get('manage-client','ClientController@index');
+Route::get('add-product','ProductController@index');
+Route::get('add-stock','StockController@index');
+Route::get('view-product','ProductController@viewProduct');
+Route::post('manage-client/add','ClientController@store');
+Route::post('add-product/add','ProductController@store');
+Route::post('add-stock/add','StockController@store');
+Route::delete('manage-client/delete','ClientController@delete');
 
-Route::get('/add-stock', function()
-{
-	return View::make('add-stock');
-});
-
-Route::get('/view-stock', function()
-{
-	return View::make('view-stock');
-});
 
 Route::post('login','LoginController@doLogIn');
 Route::get('logout', 'LoginController@doLogout');

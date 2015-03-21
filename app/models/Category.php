@@ -9,6 +9,5 @@ class Category extends \Eloquent {
 
 		$category->category = $category['category'];
 		$category->save();
-
 	}
 }

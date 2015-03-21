@@ -10,6 +10,29 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+					@if ($errors->has())
+						<div class='alert alert-danger alert-dismissable'>
+							<button class='close' type='button' data-dismiss="alert" aria-hidden="true">
+								&times;
+							</button>
+					    	@foreach ($errors->all() as $error)
+					        	{{ $error.'<br>' }}
+
+					    	@endforeach
+					    </div>
+					@endif					
+					<div class="flash-message">
+					  @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+					    @if(Session::has('alert-' . $msg))
+					    <p class="alert alert-{{ $msg }} alert-dismissable">
+							<button class='close' type='button' data-dismiss="alert" aria-hidden="true">
+								&times;
+							</button>
+					    	{{ Session::get('alert-' . $msg) }}
+					    </p>
+					    @endif
+					  @endforeach
+					</div>
 					<h3 class="page-title">
 					Stock Add <small>create new stock</small>
 					</h3>
@@ -20,12 +43,9 @@
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<form class="form-horizontal form-row-seperated" action="#">
+						{{ Form::open(array('url' => 'add-stock/add', 'class' => 'form-horizontal form-row-seperated')) }}
 						<div class="portlet">
 							<div class="portlet-title">
-								<!-- <div class="caption">
-									<i class="fa fa-shopping-cart"></i>Test Product
-								</div> -->
 								<div class="actions btn-set">
 									<button class="btn default"><i class="fa fa-reply"></i> Reset</button>
 									<button class="btn green"><i class="fa fa-check"></i> Save</button>
@@ -43,7 +63,7 @@
 													</span>
 													</label>
 													<div class="col-md-10">
-														<input type="text" class="form-control" name="product[name]" placeholder="">
+														<input type="text" class="form-control" name="invoice_id" placeholder="" value="{{ Input::old('invoice_id') }}">
 													</div>
 												</div>
 												<div class="product-group">
@@ -54,10 +74,28 @@
 														</span>
 														</label>
 														<div class="col-md-2">
-															<select class="form-control" name="product[status]">
-																<option value="">Select...</option>
-																<option value="1">Published</option>
-																<option value="0">Not Published</option>
+															<select class="table-group-action-input form-control" name="category_id"  required>
+																<option>Select</option>
+																@if( isset($category))
+																	@foreach($category as $categories)
+																		<option value='{{ $categories->id }}'>{{ $categories->category }}</option>
+																	@endforeach
+																@endif
+															</select>
+														</div>													
+														<label class="col-md-2 control-label">Sub-category:
+														<span class="required">
+															 *
+														</span>
+														</label>
+														<div class="col-md-2">
+															<select class="table-group-action-input form-control" name="subcategory_id" required>
+																<option>Select</option>
+																@if( isset($subcategory))
+																	@foreach($subcategory as $subcategories)
+																		<option value='{{ $subcategories->id }}'>{{ $subcategories->subcategory }}</option>
+																	@endforeach
+																@endif
 															</select>
 														</div>													
 														<label class="col-md-2 control-label">Product:
@@ -66,84 +104,40 @@
 														</span>
 														</label>
 														<div class="col-md-2">
-															<select class="form-control" name="product[status]">
-																<option value="">Select...</option>
-																<option value="1">Published</option>
-																<option value="0">Not Published</option>
+															<select class="table-group-action-input form-control" name="product_id" required>
+																<option>Select</option>
+																@if( isset($product))
+																	@foreach($product as $products)
+																		<option value='{{ $products->id }}'>{{ $products->name }}</option>
+																	@endforeach
+																@endif
 															</select>
-														</div>													
+														</div>
+													</div>
+													<div class="form-group">													
 														<label class="col-md-2 control-label">Quantity:
 														<span class="required">
 															 *
 														</span>
 														</label>
 														<div class="col-md-2">
-															<input type="text" class="form-control" name="product[name]" placeholder="">
+															<input type="text" class="form-control" name="quantity" value="{{ Input::old('quantity') }}" placeholder="">
 														</div>
-													</div>
-													<div class="form-group">
 														<label class="col-md-2 control-label">Purchase price:
 														<span class="required">
 															 *
 														</span>
 														</label>
 														<div class="col-md-2">
-															<input type="text" class="form-control" name="product[name]" placeholder="">
-														</div>													
-														<label class="col-md-2 control-label">Sale price:
+															<input type="text" class="form-control" name="purchase_price" value="{{ Input::old('purchase_price') }}" placeholder="">
+														</div>												
+														<label class="col-md-2 control-label">Purchase Date:
 														<span class="required">
 															 *
 														</span>
 														</label>
 														<div class="col-md-2">
-															<input type="text" class="form-control" name="product[name]" placeholder="">
-														</div>													
-														<label class="col-md-2 control-label">Sale price (min):
-														<span class="required">
-															 *
-														</span>
-														</label>
-														<div class="col-md-2">
-															<input type="text" class="form-control" name="product[name]" placeholder="">
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-md-2 control-label">Purchase date:
-														<span class="required">
-															 *
-														</span>
-														</label>
-														<div class="col-md-2">
-															<input type="text" class="form-control" name="product[name]" placeholder="">
-														</div>													
-														<label class="col-md-2 col-sm-4 col-xs-4 control-label">Warenty:</label>
-														<div class="col-md-1 col-sm-3 col-xs-3">
-															<input type="text" class="form-control" name="product[name]" placeholder="">
-														</div>	
-														<div class="col-md-1 col-sm-3 col-xs-3">
-															<select class="form-control" name="product[status]">
-																<option value=""></option>
-																<option value="1">D = Days</option>
-																<option value="0">M = Months</option>
-																<option value="0">Y = Years</option>
-															</select>
-														</div>														
-														<label class="col-md-2 control-label">Vendor:
-														<span class="required">
-															 *
-														</span>
-														</label>
-														<div class="col-md-2">
-															<input type="text" class="form-control" name="product[name]" placeholder="">
-														</div>
-													</div>
-
-													<div class="form-group">
-														<label class="col-md-2 control-label">Note
-														</label>
-														<div class="col-md-10">
-															<textarea class="form-control" name="product[name]" placeholder=""> 
-															</textarea>
+															<input type="text" class="form-control" name="purchase_date" value="{{ Input::old('purchase_date') }}" placeholder="">
 														</div>
 													</div>
 												</div>
@@ -157,12 +151,12 @@
 														</span>
 														</label>
 														<div class="col-md-2">
-															<input type="text" class="form-control" name="product[name]" placeholder="">
+															<input type="text" class="form-control" name="total_amount" value="{{ Input::old('total_amount') }}" placeholder="">
 														</div>													
 														<label class="col-md-2 control-label">Paid Amount:
 														</label>
 														<div class="col-md-2">
-															<input type="text" class="form-control" name="product[name]" placeholder="">
+															<input type="text" class="form-control" name="paid_amount" value="{{ Input::old('paid_amount') }}" placeholder="">
 														</div>												
 														<label class="col-md-2 control-label">Due Amount:
 														<span class="required">
@@ -170,7 +164,15 @@
 														</span>
 														</label>
 														<div class="col-md-2">
-															<input type="text" class="form-control" name="product[name]" placeholder="">
+															<input type="text" class="form-control" name="due_amount" value="{{ Input::old('due_amount') }}" placeholder="">
+														</div>
+														<br><br>
+														<div class="form-group">
+															<label class="col-md-2 control-label">Note
+															</label>
+															<div class="col-md-10">
+																<textarea class="form-control" name="note" placeholder="">{{ Input::old('note') }}</textarea>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -180,7 +182,7 @@
 								</div>
 							</div>
 						</div>
-					</form>
+						{{ Form::close() }}
 				</div>
 			</div>
 			<!-- END PAGE CONTENT-->
